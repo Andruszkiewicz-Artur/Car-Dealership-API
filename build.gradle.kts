@@ -28,10 +28,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-	//Lombok
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-
 	//MongoDB
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
