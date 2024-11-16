@@ -34,6 +34,9 @@ dependencies {
 
 	//h2
 	testImplementation("com.h2database:h2")
+
+	//JPA
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 
 kotlin {
