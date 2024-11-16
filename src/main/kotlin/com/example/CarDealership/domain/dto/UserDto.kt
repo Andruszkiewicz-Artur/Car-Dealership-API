@@ -1,6 +1,7 @@
 package com.example.CarDealership.domain.dto
 
 import com.example.CarDealership.domain.entity.UserEntity
+import com.example.CarDealership.domain.enums.TypeOfAccount
 
 data class UserDto(
     val id: Long? = null,
@@ -9,6 +10,7 @@ data class UserDto(
     val email: String,
     val password: String,
     val phoneNumber: Int,
+    val typeOfAccount: TypeOfAccount
 ) {
     fun toEntity() = UserEntity(
         id = id,
@@ -16,6 +18,7 @@ data class UserDto(
         surname = surname,
         email = email,
         password = password,
-        phoneNumber = phoneNumber
+        phoneNumber = phoneNumber,
+        typeOfAccount = typeOfAccount
     )
 }

@@ -37,6 +37,10 @@ dependencies {
 
 	//JPA
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+	//flyWay
+	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-database-postgresql")
 }
 
 kotlin {

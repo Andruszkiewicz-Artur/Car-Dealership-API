@@ -2,7 +2,6 @@ package com.example.CarDealership.domain.entity
 
 import com.example.CarDealership.domain.dto.UserDto
 import com.example.CarDealership.domain.enums.TypeOfAccount
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 
 @Entity
@@ -38,6 +37,7 @@ data class UserEntity(
         surname = surname,
         email = email,
         password = password,
-        phoneNumber = phoneNumber
+        phoneNumber = phoneNumber,
+        typeOfAccount = typeOfAccount
     )
 }
