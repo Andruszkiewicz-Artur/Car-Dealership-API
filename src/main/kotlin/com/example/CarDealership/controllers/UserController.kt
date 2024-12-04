@@ -1,15 +1,26 @@
 package com.example.CarDealership.controllers
 
-import com.example.CarDealership.domain.dto.UserDto
+import com.example.CarDealership.domain.dto.user.UserRequest
+import com.example.CarDealership.domain.dto.user.UserResponse
 import com.example.CarDealership.services.UserService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/api/user")
 class UserController(private val userService: UserService) {
 
-    @PostMapping(path = ["/api/user"])
-    fun createUser(@RequestBody userDto: UserDto): UserDto = userService.createUser(userDto.toEntity()).toDto()
+    @PostMapping
+    fun createUser(@RequestBody userRequest: UserRequest): UserResponse =
+        userService
+            .createUser(
+                userRequest.toEntity()
+            ).toResponse()
 
+    @GetMapping
+    fun getAll(): List<UserResponse> =
+        userService
+            .getAll()
+            .map {
+                it.toResponse()
+            }
 }

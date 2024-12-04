@@ -6,4 +6,6 @@ interface UserService {
     fun createUser(userEntity: UserEntity): UserEntity
 
     fun updateUser(userEntity: UserEntity): UserEntity
+
+    fun getAll(): List<UserEntity>
 }

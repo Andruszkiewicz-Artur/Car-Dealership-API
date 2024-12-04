@@ -1,43 +1,44 @@
 package com.example.CarDealership.domain.entity
 
-import com.example.CarDealership.domain.dto.UserDto
+import com.example.CarDealership.domain.dto.user.UserResponse
 import com.example.CarDealership.domain.enums.TypeOfAccount
 import jakarta.persistence.*
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 data class UserEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
-    @Column(name = "id", nullable = false)
-    val id: Long? = null,
+    @GeneratedValue
+    val id: Long,
 
-    @Column(name = "name", nullable = false)
     val name: String,
 
-    @Column(name = "surname", nullable = false)
     val surname: String,
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(unique = true)
     val email: String,
 
-    @Column(name = "password", nullable = false)
     val password: String,
 
-    @Column(name = "phoneNumber", nullable = false)
-    val phoneNumber: Int,
+    val phoneNumber: String,
 
-    @Column(name = "typeOfAccount", nullable = false)
     @Enumerated(EnumType.STRING)
     val typeOfAccount: TypeOfAccount
 ) {
-    fun toDto() = UserDto(
+    fun toResponse() = UserResponse(
         id = id,
         name = name,
         surname = surname,
-        email = email,
-        password = password,
-        phoneNumber = phoneNumber,
-        typeOfAccount = typeOfAccount
+        email = email
     )
+
+    fun toUserDetails(): UserDetails =
+        User
+            .builder()
+            .username(email)
+            .password(password)
+            .roles(typeOfAccount.name)
+            .build()
 }
