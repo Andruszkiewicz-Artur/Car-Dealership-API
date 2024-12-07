@@ -32,10 +32,24 @@ class SecurityConfiguration(
                     )
                     .permitAll()
 
-                    .requestMatchers(HttpMethod.POST, "/api/user")
+                    .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/user"
+                    )
                     .permitAll()
 
-                    .requestMatchers("/api/user**")
+                    .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/car",
+                        "/api/car/**"
+                    )
+                    .permitAll()
+
+                    .requestMatchers(
+                        "/api/user**",
+                        "/api/car**",
+                        "/api/car/**"
+                    )
                     .hasRole("Admin")
                     .anyRequest()
                     .fullyAuthenticated()

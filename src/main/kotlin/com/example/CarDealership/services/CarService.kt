@@ -1,9 +1,13 @@
 package com.example.CarDealership.services
 
 import com.example.CarDealership.domain.entity.CarEntity
+import com.example.CarDealership.domain.entity.ImageEntity
 
 interface CarService {
-    fun addCar(carEntity: CarEntity): CarEntity
+    fun addCar(
+        carEntity: CarEntity,
+//        images: List<ByteArray>
+    )
 
     fun updateCar(carEntity: CarEntity): CarEntity
 
@@ -11,5 +15,5 @@ interface CarService {
 
     fun getCars(): List<CarEntity>
 
-    fun removeCar(carEntity: CarEntity)
+    fun removeCar(id: Long)
 }
