@@ -8,13 +8,6 @@ import java.time.LocalDateTime
 data class VisitDto(
     val id: Long? = null,
     val date: LocalDateTime,
-    val user: UserEntity,
-    val car: CarEntity
-) {
-    fun toEntity() = VisitEntity(
-        id = id,
-        date = date,
-        user = user,
-        car = car
-    )
-}
+    val userId: Long,
+    val carId: Long
+)

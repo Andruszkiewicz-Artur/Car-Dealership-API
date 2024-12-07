@@ -28,7 +28,10 @@ class SecurityConfiguration(
                     .requestMatchers(
                         "/api/auth",
                         "/api/auth/refresh",
-                        "/error"
+                        "/error",
+                        "/visit",
+                        "/visit**",
+                        "/visit/**"
                     )
                     .permitAll()
 

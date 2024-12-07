@@ -8,25 +8,24 @@ import java.time.LocalDateTime
 @Table(name = "visits")
 data class VisitEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visit_id_seq")
-    @Column(name = "id")
-    val id: Long? = null,
+    @GeneratedValue
+    val id: Long,
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     val date: LocalDateTime,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     val user: UserEntity,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "car_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "car_id")
     val car: CarEntity
 ) {
     fun toDto() = VisitDto(
         id = id,
         date = date,
-        user = user,
-        car = car
+        userId = user.id,
+        carId = car.id ?: throw RuntimeException("Problem with take id of car!")
     )
 }

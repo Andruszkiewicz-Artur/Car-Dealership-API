@@ -25,7 +25,10 @@ data class UserEntity(
     val phoneNumber: String,
 
     @Enumerated(EnumType.STRING)
-    val typeOfAccount: TypeOfAccount
+    val typeOfAccount: TypeOfAccount,
+
+    @OneToMany(mappedBy = "user")
+    val visits: List<VisitEntity> = mutableListOf()
 ) {
     fun toResponse() = UserResponse(
         id = id,

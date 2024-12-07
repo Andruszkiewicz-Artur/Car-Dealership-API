@@ -13,7 +13,7 @@ import jakarta.persistence.*
 data class CarEntity(
     @Id
     @GeneratedValue
-    val id: Long? = null,
+    val id: Long,
 
     val brand: String,
 
@@ -51,6 +51,9 @@ data class CarEntity(
     @Enumerated(EnumType.STRING)
     val drive: DriveType,
 
+    @OneToMany(mappedBy = "car")
+    val visits: List<VisitEntity> = mutableListOf()
+
 //    @OneToMany(mappedBy = "car")
 //    val images: MutableList<ImageEntity> = mutableListOf()
 ) {
@@ -74,6 +77,7 @@ data class CarEntity(
         numberOfDoors = numberOfDoors,
         numberOfSeats = numberOfSeats,
         drive = drive,
+        visits = visits.map { it.toDto() },
 //        images = images.map {
 //            it.toDto()
 //        }

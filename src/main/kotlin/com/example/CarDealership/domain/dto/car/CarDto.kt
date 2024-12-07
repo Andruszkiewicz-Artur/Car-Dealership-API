@@ -1,8 +1,10 @@
 package com.example.CarDealership.domain.dto.car
 
 import com.example.CarDealership.domain.dto.ImageDto
+import com.example.CarDealership.domain.dto.VisitDto
 import com.example.CarDealership.domain.entity.CarEntity
 import com.example.CarDealership.domain.entity.ImageEntity
+import com.example.CarDealership.domain.entity.VisitEntity
 import com.example.CarDealership.domain.enums.BodyType
 import com.example.CarDealership.domain.enums.DriveType
 import com.example.CarDealership.domain.enums.FuelType
@@ -27,6 +29,7 @@ data class CarDto(
     val numberOfDoors: Int,
     val numberOfSeats: Int,
     val drive: DriveType,
+    val visits: List<VisitDto>,
 //    val images: List<ImageDto>
 ) {
     fun toEntity() = CarEntity(
